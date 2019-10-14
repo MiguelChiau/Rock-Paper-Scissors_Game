@@ -32,7 +32,15 @@ const game = () => {
         // Math.floor() will round off the number to nearest downward integer
         const computerNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[computerNumber];
-        // console.log(computerChoice);
+        console.log(computerNumber);
+        console.log(computerChoice);
+
+        //To update the hand icons
+        personHand.src = `./assets/${this.textContent}.png`;
+        computerHand.src = `./assets/${computerChoice}.png`;
+
+        //Now call the compareHands funct to update the text for winner
+        console.log(compareHands(this.textContent, computerChoice));
       });
     });
   };
@@ -85,5 +93,6 @@ const game = () => {
   //   Then make a call of all small functions
   startGame();
   playGame();
+  //   compareHands();
 };
 game();
