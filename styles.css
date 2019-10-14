@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #4251f5;
+
+  font-family: sans-serif;
+}
+.score {
+  color: #e8e8e8;
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.score h2,
+p {
+  font-size: 30px;
+  text-align: center;
+  padding: 10px;
+}
+
+.scores {
+  background: #4410e0;
+  padding: 0 3rem;
+  line-height: 1;
+  border-radius: 1rem;
+}
+
+.intro h1 {
+  font-size: 50px;
+  color: #e8e8e8;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50vh;
+  transition: opacity 0.5s ease;
+}
+
+a {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  color: #2196f3;
+  background-color: #4410e0;
+  text-transform: uppercase;
+  initial-letter: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #255784;
+  background: #4410e0;
+  box-shadow: 0 0 10px #4410e0, 0 0 40px #4410e0, 0 0 80px #4410e0;
+}
+
+.match {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease 0.5s;
+}
+
+.winner {
+  color: #e8e8e8;
+  text-align: center;
+  font-size: 50px;
+}
+
+.hands,
+.options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.match button {
+  background: #4410e0;
+  padding: 5px 10px;
+  color: #e8e8e8;
+  border: 1px solid #4410e0;
+  text-transform: uppercase;
+  initial-letter: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* To rotate one of the player hands */
+.player-hand {
+  transform: rotateY(180deg);
+}
+/* These div contains the match and the hands for at first it's hidden */
+div.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+div.fadeIn {
+  opacity: 1;
+  pointer-events: all;
+}
