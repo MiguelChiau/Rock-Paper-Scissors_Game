@@ -1,7 +1,8 @@
 const game = () => {
   // Since we want to update the scores
-  let personScore = 0;
-  let computerScore = 0;
+  let perScore = 0;
+  let compScore = 0;
+  const modal = document.querySelector(".modal");
 
   //   To initialize the game
   const startGame = () => {
@@ -40,51 +41,101 @@ const game = () => {
         computerHand.src = `./assets/${computerChoice}.png`;
 
         //Now call the compareHands funct to update the text for winner
-        console.log(compareHands(this.textContent, computerChoice));
+        compareHands(this.textContent, computerChoice);
       });
     });
   };
 
+  //   To update the score
+  const updateScore = () => {
+    const personScore = document.querySelector(".player-score p");
+    const computerScore = document.querySelector(".computer-score p");
+    personScore.textContent = perScore;
+    computerScore.textContent = compScore;
+  };
+
   //   To check the game hands
   const compareHands = (personChoice, computerChoice) => {
+    console.log("my choice", personChoice);
+
     //   This is to update the text about who won
     const winner = document.querySelector(".winner");
+    console.log("class", winner);
 
     // Checking for a tie
     if (personChoice === computerChoice) {
-      winner.textContent = "We have a Tie 🙄!";
+      winner.textContent = "We have a Tie 🤪!";
       return;
     }
 
     //Then check for rock
     if (personChoice === "rock") {
-      if (computerChoice == "scissors") {
+      if (computerChoice === "scissors") {
         winner.textContent = "Human player wins 🤩🤴🏿";
+        //call and increment the person's score
+        perScore++;
+        updateScore();
         return;
       } else {
         winner.textContent = "The computer beat you 👻";
+        //call and increment the computer's score
+        compScore++;
+        updateScore();
+        return;
+      }
+    }
+
+    //
+    //Then check for rock
+    if (personChoice === "rock") {
+      if (computerChoice === "paper") {
+        winner.textContent = "The computer beat you 👻";
+        //call and increment the person's score
+        compScore++;
+        updateScore();
+        return;
+      }
+    }
+
+    //Then check for rock
+    if (personChoice === "rock") {
+      if (computerChoice === "rock") {
+        winner.textContent = "We have a tie";
+        //call and increment the person's score
         return;
       }
     }
 
     //Now checking for paper
-    if (personChoice === "rock") {
+    if (personChoice === "paper") {
       if (computerChoice === "scissors") {
-        winner.textContent = "Human player wins 🤩🤴🏿";
+        winner.textContent = "The computer beat you 👻";
+        compScore++;
+        updateScore();
+
         return;
       } else {
-        winner.textContent = "The computer beat you 👻";
+        winner.textContent = "Human player wins 🤩🤴🏿";
+        perScore++;
+        updateScore();
+
         return;
       }
     }
 
     // Finally checking for scissors
-    if (personChoice === "scissors") {
+    if ((personChoice = "scissors")) {
       if (computerChoice === "rock") {
         winner.textContent = "The computer beat you 👻";
+        compScore++;
+        updateScore();
+
         return;
       } else {
         winner.textContent = "Human player wins 🤩🤴🏿";
+        perScore++;
+        updateScore();
+
         return;
       }
     }
@@ -93,6 +144,5 @@ const game = () => {
   //   Then make a call of all small functions
   startGame();
   playGame();
-  //   compareHands();
 };
 game();
