@@ -7,7 +7,7 @@
     <Link rel="stylesheet" href="styles.css" />
     <title>Rock Paper Scissors Game</title>
   </head>
-  <body>
+  <body >
     <nav>
       <div class="score">
         <div class="player-score">
@@ -25,7 +25,7 @@
     </nav>
     <section class="game">
       <div class="intro">
-        <h1>Welcome to Rock Paper Scissors Game!</h1>
+        <h1 id ="text"></h1>
         <a href="#">
           <span></span>
           <span></span>
@@ -47,13 +47,23 @@
         </div>
       </div>
     </section>
-    <!-- The modal -->
-    <!-- <div class="modal">
-      <div class="modal-content">
-        <h1>Yesss you beat the computer 👏🏿 😜!!</h1>
-      </div> -->
+   
     </div>
+     <script>
+            var i = 0,
+              text;
+            text = 'Welcome to Rock Paper Scissors Game!';
+      function typing() {
+        if (i < text.length) {
+                document.getElementById("text").innerHTML += text.charAt(i);
 
+          i++;
+            // During of the typing in miliseconds
+            setTimeout(typing, 70);
+          }
+        }
+        typing();
+    </script>
     <script src="app.js"></script>
   </body>
 </html>
