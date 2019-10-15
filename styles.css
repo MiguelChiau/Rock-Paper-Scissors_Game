@@ -107,15 +107,15 @@ a:hover {
 div.fadeOut {
   opacity: 0;
   pointer-events: none;
-  background-image: url("assets/stadium.jpeg");
-  background-size: 100% 100%;
+  /* background-image: url("assets/stadium.jpeg"); */
+  /* background-size: 100% 100%; */
 }
 
 div.fadeIn {
   opacity: 1;
   pointer-events: all;
   /* background-image: url("assets/stadium.jpeg"); */
-  background-size: 100% 100%;
+  /* background-size: 100% 100%; */
 }
 
 @keyframes shakePerson {
