@@ -91,6 +91,7 @@ const game = () => {
       winner.textContent = personWon;
       perScore++;
       updateScore();
+
       return;
     } else {
       winner.textContent = computerWon;
