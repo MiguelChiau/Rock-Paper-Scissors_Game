@@ -46,8 +46,8 @@ const game = () => {
 
         setTimeout(() => {
           //Now call the compareHands funct to update the text for winner
-
           compareHands(this.textContent, computerChoice);
+
           //To update the hand icons
           personHand.src = `./assets/${this.textContent}.png`;
           computerHand.src = `./assets/${computerChoice}.png`;
@@ -61,8 +61,8 @@ const game = () => {
 
   //   To update the score
   const updateScore = () => {
-    const personScore = document.querySelector(".player-score p");
-    const computerScore = document.querySelector(".computer-score p");
+    const personScore = document.querySelector(".person-scores");
+    const computerScore = document.querySelector(".computer-scores");
     personScore.textContent = perScore;
     computerScore.textContent = compScore;
   };
@@ -71,6 +71,11 @@ const game = () => {
   const compareHands = (personChoice, computerChoice) => {
     //   This is to update the text about who won
     const winner = document.querySelector(".winner");
+
+    console.log("my choice", personChoice);
+    console.log("computer choice", computerChoice);
+    // console.log(winner);
+
     const tie = "We have a Tie 🤪!";
     const computerWon = "The computer beat you 👻";
     const personWon = "Human player wins 🤩🤴🏿";
@@ -78,45 +83,20 @@ const game = () => {
     if (personChoice === computerChoice) {
       winner.textContent = tie;
       return;
-    } else if (personChoice === "rock") {
-      if (computerChoice === "paper") {
-        winner.textContent = computerWon;
-        compScore++;
-        updateScore();
-        return;
-      } else {
-        winner.textContent = personWon;
-        perScore++;
-        updateScore();
-        return;
-      }
-    } else if (personChoice === "paper") {
-      if (computerChoice === "scissors") {
-        winner.textContent = computerWon;
-        compScore++;
-        updateScore();
-        return;
-      } else {
-        winner.textContent = personWon;
-        perScore++;
-        updateScore();
-        return;
-      }
-    } else if (personChoice === "scissors") {
-      if (computerChoice === "rock") {
-        winner.textContent = computerWon;
-        compScore++;
-        updateScore();
-
-        return;
-      } else {
-        winner.textContent = personWon;
-        perScore++;
-        updateScore();
-        console.log("test", updateScore);
-
-        return;
-      }
+    } else if (
+      (personChoice === "rock" && computerChoice === "scissors") ||
+      (personChoice === "scissors" && computerChoice === "paper") ||
+      (personChoice === "paper" && computerChoice === "rock")
+    ) {
+      winner.textContent = personWon;
+      perScore++;
+      updateScore();
+      return;
+    } else {
+      winner.textContent = computerWon;
+      compScore++;
+      updateScore();
+      return;
     }
   };
 
